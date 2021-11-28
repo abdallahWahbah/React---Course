@@ -37,13 +37,13 @@ const Login = (props) => {
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {value: '', isValid: undefined});
   const [passwordState, dispatchPassword] = useReducer(passwordReducer, {value:'', isValid: undefined});
-  // we use reducer when we have a state that depends on another state
+  // we use reducer when we have a state that depends on another state (complex states)
 
 
   const {isValid: emailIsValid} = emailState;
   const {isValid: passwordIsValid} =passwordState;
 
-  useEffect(()=> // is called after every component render cycle
+  useEffect(()=> // is called after every component render cycle يعني بيتنفذ اخر حاجة في الصفحة دي
   { 
     // the idea here is to set validity only if the user stops writing after .5 seconds
     // if you typed too quickly (less than .5 seconds between each key stroke), the setTimeout func will not be called(called only once (at the last key stroke))
@@ -62,23 +62,16 @@ const Login = (props) => {
     };
     // whenever the "useEffect" func runs, before it runs, except for the first time it runs
     // the cleanup func will run (the return func) (cleanup func is not called in the first time (only before what is after the first time))
+    // it is not run before the first useEffect execution
   }, [emailIsValid, passwordIsValid]) 
 
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: "USER_INPUT", val:event.target.value})
-
-    // setFormIsValid(
-    //   emailState.isValid && passwordState.isValid
-    // );
   };
 
   const passwordChangeHandler = (event) => {
     dispatchPassword({type: "USER_INPUT", val:event.target.value})
-
-    // setFormIsValid(
-    //   emailState.isValid && event.target.value.trim().length > 6
-    // );
   };
 
   const validateEmailHandler = () => {
