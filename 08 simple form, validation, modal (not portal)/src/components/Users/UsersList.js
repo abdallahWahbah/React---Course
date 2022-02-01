@@ -3,6 +3,7 @@ import Card from '../UI/Card';
 
 const UsersList =(props) =>
 {
+    if(props.users.length === 0) return <div style={{color:"white"}}>No users</div>
     return (
         <Card className = {classes.users}>
             <ul>
