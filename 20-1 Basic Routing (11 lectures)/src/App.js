@@ -15,7 +15,7 @@ function App() {
             <Switch>
               {/* if you visited "/", change the url (redirect) to "/welcome" */}
               <Route exact path="/">
-                <Redirect to="welcome"/>
+                <Redirect to="welcome"/>y
               </Route>
               <Route exact path="/welcome">
                 <Welcome/>
